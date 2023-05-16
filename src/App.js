@@ -28,12 +28,13 @@ function App() {
       </li>
     )
   })
-
-
+  
+  
   const handleTaskInput = (event) => {
     setNewTask(event.target.value)
   }
 
+  
   const handleRadioButton = (event) => {
     setNewPriority(event.target.value)
   }
@@ -46,8 +47,12 @@ function App() {
       setTasks(updatedTaskList)
       setNewTask("")
       setNewPriority("")
-      document.getElementById("task-priority-high").checked = false
-      document.getElementById("task-priority-low").checked = false
+      console.dir(event.target)
+      event.target[1].checked = false
+      event.target[2].checked = false
+      //event.target.value = falsew
+      //document.getElementById("task-priority-high").checked = false
+      //document.getElementById("task-priority-low").checked = false
     }
   }
 
@@ -56,6 +61,7 @@ function App() {
     setTasks(newTasks)
   }
 
+
   return (
     <div className="App">
       <h1>To-Do List</h1>
@@ -63,9 +69,9 @@ function App() {
         <label htmlFor="new-task-input">Add a new to-do:</label>
         <input id="new-task-input" type="text" value={newTask} onChange={handleTaskInput}></input>
         <label htmlFor="task-priority-high">High:</label>
-        <input id="task-priority-high" type="radio" name="task-priority" value="high" onClick={handleRadioButton}></input>
+        <input id="task-priority-high" type="radio" name="task-priority" value="high" onChange={handleRadioButton} ></input>
         <label htmlFor="task-priority-low">Low:</label>
-        <input id="task-priority-low" type="radio" name="task-priority" value="low" onClick={handleRadioButton}></input>
+        <input id="task-priority-low" type="radio" name="task-priority" value="low" onChange={handleRadioButton} ></input>
         <input type="submit" value="Add task"></input>
 
       </form>
